@@ -56,53 +56,53 @@ public class Game extends ApplicationAdapter {
 		int saut = this.getScreenWidth()/10;
 		int maxHeight = gameBoard.getHeight();
 
-		bricks.add(new Brick(this, saut*0, maxHeight - 50 - 50));
-		bricks.add(new Brick(this, saut*2, maxHeight - 50 - 50));
-		bricks.add(new Brick(this, saut*4, maxHeight - 50 - 50));
-		bricks.add(new Brick(this, saut*6, maxHeight - 50 - 50));
-		bricks.add(new Brick(this, saut*8, maxHeight - 50 - 50));
+		bricks.add(new Brick(this, saut*0, maxHeight - 50 - 50, 2));
+		bricks.add(new Brick(this, saut*2, maxHeight - 50 - 50, 2));
+		bricks.add(new Brick(this, saut*4, maxHeight - 50 - 50, 2));
+		bricks.add(new Brick(this, saut*6, maxHeight - 50 - 50, 2));
+		bricks.add(new Brick(this, saut*8, maxHeight - 50 - 50, 2));
 
-		bricks.add(new Brick(this, saut*1, maxHeight - 50 - 100));
-		bricks.add(new Brick(this, saut*3, maxHeight - 50 - 100));
-		bricks.add(new Brick(this, saut*5, maxHeight - 50 - 100));
-		bricks.add(new Brick(this, saut*7, maxHeight - 50 - 100));
-		bricks.add(new Brick(this, saut*9, maxHeight - 50 - 100));
+		bricks.add(new Brick(this, saut*1, maxHeight - 50 - 100, 2));
+		bricks.add(new Brick(this, saut*3, maxHeight - 50 - 100, 2));
+		bricks.add(new Brick(this, saut*5, maxHeight - 50 - 100, 2));
+		bricks.add(new Brick(this, saut*7, maxHeight - 50 - 100, 2));
+		bricks.add(new Brick(this, saut*9, maxHeight - 50 - 100, 2));
 
-		bricks.add(new Brick(this, saut*0, maxHeight - 50 - 200));
-		bricks.add(new Brick(this, saut*1, maxHeight - 50 - 200));
-		bricks.add(new Brick(this, saut*2, maxHeight - 50 - 200));
-		bricks.add(new Brick(this, saut*3, maxHeight - 50 - 200));
-		bricks.add(new Brick(this, saut*4, maxHeight - 50 - 200));
-		bricks.add(new Brick(this, saut*5, maxHeight - 50 - 200));
-		bricks.add(new Brick(this, saut*6, maxHeight - 50 - 200));
-		bricks.add(new Brick(this, saut*7, maxHeight - 50 - 200));
-		bricks.add(new Brick(this, saut*8, maxHeight - 50 - 200));
-		bricks.add(new Brick(this, saut*9, maxHeight - 50 - 200));
+		bricks.add(new Brick(this, saut*0, maxHeight - 50 - 200, 2));
+		bricks.add(new Brick(this, saut*1, maxHeight - 50 - 200, 2));
+		bricks.add(new Brick(this, saut*2, maxHeight - 50 - 200, 2));
+		bricks.add(new Brick(this, saut*3, maxHeight - 50 - 200, 2));
+		bricks.add(new Brick(this, saut*4, maxHeight - 50 - 200, 2));
+		bricks.add(new Brick(this, saut*5, maxHeight - 50 - 200, 2));
+		bricks.add(new Brick(this, saut*6, maxHeight - 50 - 200, 2));
+		bricks.add(new Brick(this, saut*7, maxHeight - 50 - 200, 2));
+		bricks.add(new Brick(this, saut*8, maxHeight - 50 - 200, 2));
+		bricks.add(new Brick(this, saut*9, maxHeight - 50 - 200, 2));
 
 
 
-		bricks.add(new Brick(this, saut*0, maxHeight - 50 - 300));
-		bricks.add(new Brick(this, saut*2, maxHeight - 50 - 300));
-		bricks.add(new Brick(this, saut*4, maxHeight - 50 - 300));
-		bricks.add(new Brick(this, saut*6, maxHeight - 50 - 300));
-		bricks.add(new Brick(this, saut*8, maxHeight - 50 - 300));
+		bricks.add(new Brick(this, saut*0, maxHeight - 50 - 300, 2));
+		bricks.add(new Brick(this, saut*2, maxHeight - 50 - 300, 2));
+		bricks.add(new Brick(this, saut*4, maxHeight - 50 - 300, 2));
+		bricks.add(new Brick(this, saut*6, maxHeight - 50 - 300, 2));
+		bricks.add(new Brick(this, saut*8, maxHeight - 50 - 300, 2));
 
-		bricks.add(new Brick(this, saut*1, maxHeight - 50 - 350));
-		bricks.add(new Brick(this, saut*3, maxHeight - 50 - 350));
-		bricks.add(new Brick(this, saut*5, maxHeight - 50 - 350));
-		bricks.add(new Brick(this, saut*7, maxHeight - 50 - 350));
-		bricks.add(new Brick(this, saut*9, maxHeight - 50 - 350));
+		bricks.add(new Brick(this, saut*1, maxHeight - 50 - 350, 2));
+		bricks.add(new Brick(this, saut*3, maxHeight - 50 - 350, 2));
+		bricks.add(new Brick(this, saut*5, maxHeight - 50 - 350, 2));
+		bricks.add(new Brick(this, saut*7, maxHeight - 50 - 350, 2));
+		bricks.add(new Brick(this, saut*9, maxHeight - 50 - 350, 2));
 
-		bricks.add(new Brick(this, saut*0, maxHeight - 50 - 450));
-		bricks.add(new Brick(this, saut*1, maxHeight - 50 - 450));
-		bricks.add(new Brick(this, saut*2, maxHeight - 50 - 450));
-		bricks.add(new Brick(this, saut*3, maxHeight - 50 - 450));
-		bricks.add(new Brick(this, saut*4, maxHeight - 50 - 450));
-		bricks.add(new Brick(this, saut*5, maxHeight - 50 - 450));
-		bricks.add(new Brick(this, saut*6, maxHeight - 50 - 450));
-		bricks.add(new Brick(this, saut*7, maxHeight - 50 - 450));
-		bricks.add(new Brick(this, saut*8, maxHeight - 50 - 450));
-		bricks.add(new Brick(this, saut*9, maxHeight - 50 - 450));
+		bricks.add(new Brick(this, saut*0, maxHeight - 50 - 450, 1));
+		bricks.add(new Brick(this, saut*1, maxHeight - 50 - 450, 1));
+		bricks.add(new Brick(this, saut*2, maxHeight - 50 - 450, 1));
+		bricks.add(new Brick(this, saut*3, maxHeight - 50 - 450, 1));
+		bricks.add(new Brick(this, saut*4, maxHeight - 50 - 450, 1));
+		bricks.add(new Brick(this, saut*5, maxHeight - 50 - 450, 1));
+		bricks.add(new Brick(this, saut*6, maxHeight - 50 - 450, 1));
+		bricks.add(new Brick(this, saut*7, maxHeight - 50 - 450, 1));
+		bricks.add(new Brick(this, saut*8, maxHeight - 50 - 450, 1));
+		bricks.add(new Brick(this, saut*9, maxHeight - 50 - 450, 1));
 
 		begin.play();
 	}

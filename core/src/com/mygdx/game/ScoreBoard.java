@@ -27,9 +27,7 @@ public class ScoreBoard {
     private int width;
     private Color color;
 
-    private FreeTypeFontGenerator generator = new FreeTypeFontGenerator(Gdx.files.internal("arial.ttf"));
-    private FreeTypeFontParameter parameter = new FreeTypeFontParameter();
-    private BitmapFont font;
+    private Writer writer;
 
     public ScoreBoard(Game game){
         this.game = game;
@@ -40,8 +38,7 @@ public class ScoreBoard {
         this.y = game.getScreenHeight() - height;
         this.color = Color.BLACK;
 
-        parameter.size = 25;
-        font = generator.generateFont(parameter);
+        writer = new Writer(25);
     }
 
     public void render(ShapeRenderer shapeRenderer, SpriteBatch batch){
@@ -54,23 +51,23 @@ public class ScoreBoard {
 
 
         batch.begin();
-        font.setColor(Color.WHITE);
+        writer.getFont().setColor(Color.WHITE);
 
         String textScore = "SCORE: " + game.getScore();
         String textLevel = "  LVL: " + game.getLevel();
         String textLife = "LIFE: " + game.getNbBall() + "  ";
 
         int textLevelX = 0;
-        int textScoreX = (int) (this.x + (this.width - new GlyphLayout(font, textScore).width) / 2);
-        int textLifeX = (int) (this.width - new GlyphLayout(font, textLife).width);
+        int textScoreX = (int) (this.x + (this.width - new GlyphLayout(writer.getFont(), textScore).width) / 2);
+        int textLifeX = (int) (this.width - new GlyphLayout(writer.getFont(), textLife).width);
 
         int textY = game.getScreenHeight() - this.height / 3;
 
 
 
-        font.draw(batch, textLevel, textLevelX, textY);
-        font.draw(batch, textScore, textScoreX, textY);
-        font.draw(batch, textLife, textLifeX, textY);
+        writer.getFont().draw(batch, textLevel, textLevelX, textY);
+        writer.getFont().draw(batch, textScore, textScoreX, textY);
+        writer.getFont().draw(batch, textLife, textLifeX, textY);
 
         batch.end();
 
@@ -78,7 +75,7 @@ public class ScoreBoard {
 
 
     public void dispose () {
-        generator.dispose(); // don't forget to dispose to avoid memory leaks!
+        writer.getGenerator().dispose(); // don't forget to dispose to avoid memory leaks!
     }
 
     public int getX() { return x;   }

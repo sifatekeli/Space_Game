@@ -24,7 +24,11 @@ public class Racket {
 
         this.height = 20;
         this.width = game.getScreenWidth() / 5;
-        this.x = (game.getScreenWidth() / 2) - (width / 2);
+
+        int randomX = (int )(Math.random() * (game.getScreenWidth() - width) + (width/2));
+
+        this.x = randomX - (width/2);
+        //this.x = (game.getScreenWidth() / 2) - (width / 2);
         this.y = 180;
         this.color = Color.WHITE;
     }

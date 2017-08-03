@@ -18,26 +18,37 @@ public class Brick {
     private int height;
     private int width;
     private Color color;
+    private int nbLife;
 
-    public Brick(Game game, int x, int y){
+    public Brick(Game game, int x, int y, int nbLife){
         this.game = game;
 
         this.height = 50;
         this.width = game.getScreenWidth() / 10;
         this.x = x;
         this.y = y;
-        this.color = Color.WHITE;
+        this.nbLife = nbLife;
+        this.color = color.WHITE;
     }
 
-
     public void render(ShapeRenderer shapeRenderer){
+
         shapeRenderer.setColor(color);
-        shapeRenderer.begin(ShapeRenderer.ShapeType.Filled);
+        if(nbLife == 1) shapeRenderer.begin(ShapeRenderer.ShapeType.Line);
+        else shapeRenderer.begin(ShapeRenderer.ShapeType.Filled);
         shapeRenderer.rect(x, y, width, height);
         shapeRenderer.end();
     }
 
     public void dispose () {
+    }
+
+    public void removeLife(int nb){
+        this.nbLife = this.nbLife - nb;
+    }
+
+    public int getNbLife(){
+        return nbLife;
     }
 
     public Rectangle getRectangle(){

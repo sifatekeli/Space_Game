@@ -84,7 +84,7 @@ public class Ball {
             if(game.getRacket().getX() <= this.x && this.x <= (game.getRacket().getX() + game.getRacket().getWidth())){
                 directionY = 1;
                 game.wallPop();
-                speed += 0.5;
+                speed += 0.2;
             }
         }
 
@@ -139,8 +139,13 @@ public class Ball {
                 }
             }
         }
-        for(Brick brick: bricksToDelete) game.getBricks().remove(brick);
-        bricksToDelete.clear();
+        for(Brick brick: bricksToDelete) {
+            brick.removeLife(1);
+            int nbLifeOfBrick = brick.getNbLife();
+            if(nbLifeOfBrick <= 0){
+                game.getBricks().remove(brick);
+            }
+        }        bricksToDelete.clear();
 
     }
 
