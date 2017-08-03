@@ -2,20 +2,12 @@ package com.mygdx.game;
 
 import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
-import com.badlogic.gdx.math.Circle;
-import com.badlogic.gdx.math.Intersector;
-import com.badlogic.gdx.math.Rectangle;
 import java.util.Vector;
-import com.badlogic.gdx.scenes.scene2d.ui.List;
-
-import java.util.HashMap;
-
-import static com.badlogic.gdx.Input.Peripheral.Vibrator;
+import com.badlogic.gdx.graphics.GL20;
 
 public class Game extends ApplicationAdapter {
 
@@ -29,6 +21,7 @@ public class Game extends ApplicationAdapter {
 	private int nbBall;
 	private int score = 0;
 	private int level;
+	int scoreTotal = 0;
 
 	private boolean isGameRunning = false;
 
@@ -50,7 +43,7 @@ public class Game extends ApplicationAdapter {
 		ball = new Ball(this);
 		bricks = new Vector<Brick>();
 
-		nbBall = 3;
+		nbBall = 5;
 		level = 1;
 
 		int saut = this.getScreenWidth()/10;
@@ -104,13 +97,19 @@ public class Game extends ApplicationAdapter {
 		bricks.add(new Brick(this, saut*8, maxHeight - 50 - 450, 1));
 		bricks.add(new Brick(this, saut*9, maxHeight - 50 - 450, 1));
 
+		for(Brick b: bricks){
+			scoreTotal += b.getNbLife();
+		}
+
 		begin.play();
+
 	}
 
 	@Override
 	public void render () {
 		Gdx.gl.glClearColor(1, 1, 1, 1);
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
+
 
 		if(Gdx.input.isTouched()){
 			if(!isGameRunning())	startGame();
@@ -119,11 +118,12 @@ public class Game extends ApplicationAdapter {
 
 		gameBoard.render(batch);
 		scoreBoard.render(shapeRenderer, batch);
-		racket.render(shapeRenderer);
+		racket.render(shapeRenderer, batch);
 		ball.render(shapeRenderer);
 		for(Brick b: bricks){
 			b.render(shapeRenderer);
 		}
+
 	}
 	
 	@Override
@@ -160,12 +160,28 @@ public class Game extends ApplicationAdapter {
 		stopGame();
 	}
 
+	public void deleteBricks(Vector<Brick> touchedBricks){
+		for(Brick brick: touchedBricks) {
+			addScore(1);
+			brick.removeLife(1);
+			int nbLifeOfBrick = brick.getNbLife();
+			if(nbLifeOfBrick <= 0){
+				bricks.remove(brick);
+			}
+			if(score == scoreTotal) win();
+		}
+	}
+
+	public void win() {
+		level++;
+	}
+
 	public void stopGame(){
 		isGameRunning = false;
 	}
 
-	public void addScore(){
-		score++;
+	public void addScore(int nb){
+		score += nb;
 	}
 
 	public int getScreenWidth() {		return Gdx.graphics.getWidth();	}

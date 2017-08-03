@@ -1,6 +1,5 @@
 package com.mygdx.game;
 
-import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.math.Circle;
@@ -29,26 +28,21 @@ public class Ball {
     int directionY = 1;
     double speed = 10;
 
-    private Vector<Brick> bricksToDelete;
-
-
     public Ball(Game game){
-        this.game = game;
-        this.radius = 15;
-        this.x = game.getRacket().getX() + (game.getRacket().getWidth() / 2);
-        this.y = game.getRacket().getY() + game.getRacket().getHeight() + (radius / 2) + 20;
-        this.color = Color.WHITE;
-        bricksToDelete = new Vector<Brick>();
+        initBall(game);
     }
 
     public Ball(Game game, double speed){
+        initBall(game);
+        this.speed = speed;
+    }
+
+    public void initBall(Game game){
         this.game = game;
         this.radius = 15;
-        this.speed = speed;
         this.x = game.getRacket().getX() + (game.getRacket().getWidth() / 2);
         this.y = game.getRacket().getY() + game.getRacket().getHeight() + (radius / 2) + 20;
         this.color = Color.WHITE;
-        bricksToDelete = new Vector<Brick>();
     }
 
     public void startMoving(){
@@ -106,46 +100,36 @@ public class Ball {
             directionX = directionX * -1;
             game.wallPop();
         }
-
         if((this.y + this.radius) >= game.getGameBoard().getHeight()){
             //directionY = -1;
             directionY = directionY * -1;
             game.wallPop();
         }
-
         if((this.y - this.radius) <= 0){
             //directionY = 1;
             directionY = directionY * -1;
             game.looseSound();
             game.stopGame();
         }
-
+/*
         if(Intersector.overlaps(this.getCircle(), game.getRacket().getRectangle())){
             updateDirectionCircleRectangle(this.getCircle(), game.getRacket().getRectangle());
             game.brickPop();
         }
-
+*/
         //Ball touch a brick
+        Vector<Brick> touchedBricks = new Vector<Brick>();
         for(Brick brick: game.getBricks()){
             if(Intersector.overlaps(this.getCircle(), brick.getRectangle())){
-
-
                 //SI LA BOULE TOUCHE 2 COTES, ON ESTIME QU'ELLE A EFFLEURE ET DONC PAS TOUCHE LA BRIQUE
                 int touchedFaces = updateDirectionCircleRectangle(this.getCircle(), brick.getRectangle());
                 if(touchedFaces == 1) {
-                    bricksToDelete.add(brick);
+                    touchedBricks.add(brick);
                     game.brickPop();
-                    game.addScore();
                 }
             }
         }
-        for(Brick brick: bricksToDelete) {
-            brick.removeLife(1);
-            int nbLifeOfBrick = brick.getNbLife();
-            if(nbLifeOfBrick <= 0){
-                game.getBricks().remove(brick);
-            }
-        }        bricksToDelete.clear();
+        game.deleteBricks(touchedBricks);
 
     }
 
