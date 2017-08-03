@@ -32,13 +32,13 @@ public class ScoreBoard {
     public ScoreBoard(Game game){
         this.game = game;
 
-        this.height = 50;
+        this.height = game.getScreenHeight() / 25;
         this.width = game.getScreenWidth();
         this.x = 0;
         this.y = game.getScreenHeight() - height;
         this.color = Color.BLACK;
 
-        writer = new Writer(25);
+        writer = new Writer(this.height / 2);
     }
 
     public void render(ShapeRenderer shapeRenderer, SpriteBatch batch){

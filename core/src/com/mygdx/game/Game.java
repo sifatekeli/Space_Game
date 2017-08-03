@@ -116,7 +116,7 @@ public class Game extends ApplicationAdapter {
 			racket.moveTo(Gdx.input.getX());
 		}
 
-		gameBoard.render(batch);
+		gameBoard.render(shapeRenderer, batch);
 		scoreBoard.render(shapeRenderer, batch);
 		racket.render(shapeRenderer, batch);
 		ball.render(shapeRenderer);
@@ -129,11 +129,12 @@ public class Game extends ApplicationAdapter {
 	@Override
 	public void dispose () {
 		batch.dispose();
+		shapeRenderer.dispose();
 		gameBoard.dispose();
 		scoreBoard.dispose();
 		racket.dispose();
-		for(Brick b: bricks){
-			b.dispose();
+		for(Brick brick: bricks){
+			brick.dispose();
 		}
 	}
 

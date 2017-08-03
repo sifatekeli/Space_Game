@@ -30,7 +30,7 @@ public class Racket {
 
         this.x = randomX - (width/2);
         //this.x = (game.getScreenWidth() / 2) - (width / 2);
-        this.y = 180;
+        this.y = game.getScreenHeight()/6;
         this.color = Color.WHITE;
     }
 
@@ -48,7 +48,7 @@ public class Racket {
         shapeRenderer.begin(ShapeRenderer.ShapeType.Filled);
 
         //shadow
-        shapeRenderer.setColor(new Color(255, 255, 255, 0.1f));
+        shapeRenderer.setColor(new Color(255, 255, 255, 0.05f));
         shapeRenderer.rect(x, game.getGameBoard().getY(), width, game.getGameBoard().getHeight());
 
         //racket

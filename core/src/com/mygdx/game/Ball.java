@@ -39,7 +39,7 @@ public class Ball {
 
     public void initBall(Game game){
         this.game = game;
-        this.radius = 15;
+        this.radius = 12;
         this.x = game.getRacket().getX() + (game.getRacket().getWidth() / 2);
         this.y = game.getRacket().getY() + game.getRacket().getHeight() + (radius / 2) + 20;
         this.color = Color.WHITE;
@@ -123,10 +123,10 @@ public class Ball {
             if(Intersector.overlaps(this.getCircle(), brick.getRectangle())){
                 //SI LA BOULE TOUCHE 2 COTES, ON ESTIME QU'ELLE A EFFLEURE ET DONC PAS TOUCHE LA BRIQUE
                 int touchedFaces = updateDirectionCircleRectangle(this.getCircle(), brick.getRectangle());
-                if(touchedFaces == 1) {
+                //if(touchedFaces == 1) {
                     touchedBricks.add(brick);
                     game.brickPop();
-                }
+                //}
             }
         }
         game.deleteBricks(touchedBricks);

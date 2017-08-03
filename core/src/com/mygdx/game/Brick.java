@@ -23,7 +23,7 @@ public class Brick {
     public Brick(Game game, int x, int y, int nbLife){
         this.game = game;
 
-        this.height = 50;
+        this.height = game.getScreenHeight() / 25;
         this.width = game.getScreenWidth() / 10;
         this.x = x;
         this.y = y;
@@ -34,8 +34,8 @@ public class Brick {
     public void render(ShapeRenderer shapeRenderer){
 
         shapeRenderer.setColor(color);
+        if(nbLife == 2) shapeRenderer.begin(ShapeRenderer.ShapeType.Filled);
         if(nbLife == 1) shapeRenderer.begin(ShapeRenderer.ShapeType.Line);
-        else shapeRenderer.begin(ShapeRenderer.ShapeType.Filled);
         shapeRenderer.rect(x, y, width, height);
         shapeRenderer.end();
     }
